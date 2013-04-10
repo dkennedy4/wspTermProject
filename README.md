@@ -1,4 +1,0 @@
-STTT
-====
-
-STTT SE Project
