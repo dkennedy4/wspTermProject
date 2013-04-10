@@ -1,0 +1,32 @@
+body
+{
+  background-color: #e8ebff;
+  font-family: Georgia;
+}
+
+nav
+{
+  display: block;
+  margin: 1em;
+  padding-bottom: 1%; 
+}
+
+nav a
+{
+  text-decoration: none;
+  color: white;
+  background-color: blue;
+  padding: .5em;
+  font-size: medium;
+}
+
+nav a:hover
+{
+  color: white;
+  background-color: #990099;
+}
+
+nav a:visited
+{
+  color: white;
+}

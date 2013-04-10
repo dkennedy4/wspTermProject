@@ -1,0 +1,23 @@
+
+/*
+  These style rules are used for the about page / index.xhtml
+*/
+
+
+
+hgroup
+{
+  font-family: sans-serif;
+  text-align: center;
+  padding-bottom: 5%;
+}
+
+#content
+{
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #ccccff;
+  width: 50%;
+  padding: 2%;
+  border: 2px solid blue;
+}

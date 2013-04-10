@@ -1,0 +1,28 @@
+
+/*
+  These style rules are used for the about page / signup.xhtml
+*/
+
+hgroup
+{
+  font-family: sans-serif;
+  text-align: center;
+  padding-bottom: 2%;
+}
+
+#content
+{
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #ccccff;
+  width: 20%;
+  padding: 2%;
+  border: 2px solid blue;
+}
+
+.passwd
+{
+  margin-left: 4%;
+}
+
+

@@ -1,0 +1,217 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+  <h:head>
+    <title>Program06</title>
+    <h:outputStylesheet library ="css" name ="signup.css" />
+    <h:outputStylesheet library="css" name ="f2lFrontEnd.css"/>
+  </h:head>
+  <h:body>
+    
+    <nav>
+      <h:outputLink value ="faces/index.xhtml">Class Info.</h:outputLink>
+    </nav>
+    
+    <nav>    
+      <h:outputLink value ="faces/login.xhtml">Login</h:outputLink>
+    </nav>    
+  
+    <hgroup> 
+      <h1>Web Design Class Sign Up Page!</h1>
+      <h2>Please Fill In The Following Form To Add Your Contact Information</h2>
+    </hgroup> 
+    <div id ="content">
+      <h:form>
+        <table>
+          <tr>
+            <td>
+              Last Name:
+            </td>
+            <td>
+              <h:inputText value="#{user.lastName}"
+                           required="true"
+                           requiredMessage="Last name is Required"
+                           validatorMessage="Last name can't contain non-alphabet characters"
+                           id ="lastName">
+                <f:validateRegex pattern ="[a-zA-Z]*"/>
+                <f:ajax event="change" render="lastNameMsg" /> 
+              </h:inputText>
+            </td>
+            <td>
+              <h:message id="lastNameMsg" for="lastName" style ="color: red"/>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              First Name:
+            </td>
+            <td>
+              <h:inputText value="#{user.firstName}"
+                           required="true"
+                           requiredMessage="First name is Required"
+                           validatorMessage="First name can't contain non-alphabet characters"
+                           id ="firstName">
+                <f:validateRegex pattern ="[a-zA-Z]*"/>
+                <f:ajax event="change" render="firstNameMsg" />
+              </h:inputText>
+            </td>
+            <td>
+              <h:message id="firstNameMsg" for="firstName" style ="color: red"/>
+            </td>          
+          </tr>
+          <tr>
+            <td>
+              Email:
+            </td>
+            <td>
+              <h:inputText value="#{user.email}"
+                           required="true"
+                           requiredMessage="Your Email is Required"
+                           validatorMessage="Not a recognizable email address"
+                           id ="email">
+                <f:ajax event="change" render="emailMsg" />
+                <f:validateRegex pattern = "[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]"/>
+              </h:inputText>
+            </td>
+            <td>
+              <h:message id="emailMsg" for="email" style ="color: red"/>
+            </td>          
+          </tr>
+
+          <tr>
+            <td>
+              Password: 
+            </td>
+            <td>
+              <h:inputSecret value="#{user.password}"
+                             required="true"
+                             requiredMessage="You must create a password"
+                             validatorMessage="Your password must be atleast 5 characters long"
+                             id ="passwd">
+
+                <f:ajax event ="change" render="passwdMsg" />
+                <f:validateLength minimum="5" />
+              </h:inputSecret>
+
+            </td>
+            <td>
+              <h:message id="passwdMsg" for="passwd" style ="color: red" />
+            </td>
+          </tr>
+   <tr>
+            <td>
+              re-Enter Password: 
+            </td>
+            <td>
+              <h:inputSecret value ="#{user.confPasswd}"
+                             required="true"
+                             requiredMessage="You must you must re-enter your password"
+                             validatorMessage="Your password must be atleast 5 characters long"
+                             id ="repasswd">
+
+                <f:ajax event ="change" render="repasswdMsg" />
+
+              </h:inputSecret>
+
+            </td>
+            <td>
+              <h:message id="repasswdMsg" for="repasswd" style ="color: red" />
+            </td>
+          </tr>        
+          <tr>
+            <td>
+              Phone Number:
+            </td>
+            <td>
+              <h:inputText value="#{user.phoneNumber}"
+                           required="true"
+                           requiredMessage="Your Phone Number is Required"
+                           validatorMessage="Phone number must be formated accordingly ###-####"
+                           id ="phone">
+                <f:ajax event="change" render="phoneMsg" />
+                <f:validateRegex pattern ="(\d{3})-(\d{4})"/>
+              </h:inputText>
+            </td>
+            <td>
+              <h:message id="phoneMsg" for="phone" style ="color: red"/>
+            </td>          
+          </tr>
+          <tr>
+            <td>
+              Gender:
+            </td>
+            <td>
+
+              <h:selectOneRadio value="#{user.gender}"
+                                id ="gender"
+                                required="true"
+                                requiredMessage="You must provide your gender">
+                <f:selectItem itemValue ="male" itemLabel="Male" />
+                <f:selectItem itemValue ="female" itemLabel="Female"/>
+              </h:selectOneRadio>
+            </td>
+            <td>
+              <h:message for="gender" style ="color: red"/>
+            </td>          
+          </tr>
+
+        </table>
+
+        <table>
+          <tr>
+            <td>
+              Languages:
+            </td>
+            <td>
+              <h:selectManyCheckbox value="#{user.language}"
+                                    id="language"
+                                    required="true"
+                                    requiredMessage="You must select atleast one Language">
+                <f:selectItem  itemValue="English" itemLabel="English"/>
+                <f:selectItem  itemValue="Spanish" itemLabel="Spanish"/>
+                <f:selectItem  itemValue="Chinese" itemLabel="Chinese"/>
+                <f:selectItem  itemValue="Korean" itemLabel="Korean"/>
+              </h:selectManyCheckbox>
+            </td>
+            <td>
+              <h:message for="language" style ="color: red"/>
+            </td>          
+          </tr>
+
+
+        </table>
+
+        <table>
+          <tr>
+            <td>
+              Home Town:
+            </td>
+            <td>
+              <h:selectOneMenu value="#{user.homeTown}"
+                               id="homeTown"                                
+                               required="true"
+                               requiredMessage="You must select your Home Town">
+
+                <f:selectItem itemValue ="" itemLabel="" />
+                <f:selectItem itemValue="Edmond" itemLabel="Edmond"/>
+                <f:selectItem itemValue="OKC" itemLabel="OKC"/>
+                <f:selectItem itemValue="Norman" itemLabel="Norman"/>
+                <f:selectItem itemValue="Moore" itemLabel="Moore"/>
+                <f:selectItem itemValue="Tecumseh" itemLabel="Tecumseh" />
+
+              </h:selectOneMenu>
+            </td>
+            <td>
+              <h:message for="homeTown" style ="color: red"/>
+            </td>          
+          </tr>         
+        </table>
+        <h:commandButton value ="Sign Up" action="#{user.doInsert()}"/>
+        <h:outputText value="#{user.passwdMsg}" style="color:red" />
+      </h:form>
+    </div>  
+  </h:body>
+</html>
+

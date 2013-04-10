@@ -1,0 +1,48 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    template="/templates/f2lmasterpage.xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:define name="contentSection">
+
+  <section class="welcome">
+    <article>
+      <h3>Upcoming Events</h3>
+    </article>
+    
+    <article>
+      <h3>User Info</h3>
+      <h:form>
+        <fieldset>
+          <legend>
+            Current Information
+          </legend>
+          <ul>
+            <li>
+              <h:outputFormat value="Name: {0} {1}">
+                <f:param value="#{user.firstName}"/>
+                <f:param value="#{user.lastName}" />
+              </h:outputFormat>
+            </li>
+          </ul>
+          
+          <h:outputText value="#{user.email}" />
+          <br />
+          <h:outputText value="#{user.gender}" />
+          
+
+          <h:commandLink value="Update Account"></h:commandLink>
+        </fieldset>
+      </h:form>
+    </article>
+      
+    <article>
+      <h3>Assignment Notification</h3>
+    </article>
+  </section>
+
+</ui:define>
+
+</ui:composition>
+

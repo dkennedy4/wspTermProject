@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+  <h:head>
+    <title>F2L Login Page</title>
+    <h:outputStylesheet library ="css" name ="login.css" />
+    <h:outputStylesheet library="css" name ="f2lFrontEnd.css"/>
+  </h:head>
+  <h:body>
+
+    <nav>
+      New to Free 2 Learn
+    </nav>
+    
+    <nav>    
+      <h:outputLink value ="faces/signup.xhtml">Sign Up</h:outputLink>
+    </nav>
+     <nav>    
+      <h:outputLink value ="faces/index.xhtml">Class Info</h:outputLink>
+    </nav>   
+    
+    <hgroup>
+      <h1>
+        Welcome to F2L
+      </h1>
+      <h2>
+        Please Sign In!
+      </h2>
+    </hgroup>
+    <div id="content">
+      <h:form>
+        <div>
+           User Name: <h:inputText value ="#{login.email}"/>
+        </div>
+
+        <div>
+           Password: <h:inputSecret class ="passwd" value ="#{login.userPassword}"/>
+        </div>
+
+        <h:commandButton value ="Login" action="#{login.login}" />
+
+        <div>
+          <h:messages style ="color: red; font-size: small"/>
+        </div>
+      </h:form>
+    </div>
+  </h:body>
+  
+</html>
+
+
+
