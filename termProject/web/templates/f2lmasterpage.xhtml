@@ -4,8 +4,9 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets">
   <h:head>
-    <title>Welcome To F2L</title>
+    <title> <ui:insert name="F2LTitle">Welcome to F2L</ui:insert></title>
     <h:outputStylesheet library="css" name="f2lBackEnd.css" />
+    <ui:insert name="styles" />
   </h:head>
   <h:body>
     <hgroup>
