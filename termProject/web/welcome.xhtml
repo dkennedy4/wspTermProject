@@ -4,6 +4,13 @@
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:f="http://java.sun.com/jsf/core">
 
+  <ui:define name="F2LTitle" >
+    Welcome to F2L #{user.firstName}
+  </ui:define>
+  
+  <ui:define name="styles">
+    <h:outputStylesheet library="css" name="welcome.css" />
+  </ui:define>
 <ui:define name="contentSection">
 
   <section class="welcome">
