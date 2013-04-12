@@ -32,14 +32,73 @@
                 <f:param value="#{user.lastName}" />
               </h:outputFormat>
             </li>
+            <li>
+              <h:outputFormat value="Email: #{user.email}" />
+            </li>
+            <li>
+              <h:outputText value="Gender: #{user.gender}" />
+            </li>
+            <li>
+              <h:outputText value="Phone #{user.phoneNumber}" />
+            </li>
+            <li>
+              <h:outputText value="Languages: #{user.mylanguage}" />
+            </li>
+            <li>
+              <h:outputText value="HomeTown: #{user.homeTown}" />
+            </li>
+            <li>
+              <h:outputText value ="Status: #{user.association}" />
+            </li>
           </ul>
           
-          <h:outputText value="#{user.email}" />
-          <br />
-          <h:outputText value="#{user.gender}" />
-          
-
           <h:commandLink value="Update Account"></h:commandLink>
+        </fieldset>
+      </h:form>
+      
+      <h3>Current Students</h3>
+      <h:form rendered="#{user.association == 'Instructor'}">
+        <fieldset>
+          <legend>
+            Students
+          </legend>
+          <div class="isOverfowed">
+            <ul>
+              <li>
+                a
+              </li>
+              <li>
+                a
+              </li>
+              <li>
+                a
+              </li>
+              <li>
+                a
+              </li>
+              <li>
+                a
+              </li>
+              <li>
+                a
+              </li>   
+              <li>
+                a
+              </li>
+              <li>
+                a
+              </li>
+              <li>
+                a
+              </li>
+              <li>
+                a
+              </li>
+              <li>
+                a
+              </li>               
+            </ul>
+          </div>
         </fieldset>
       </h:form>
     </article>

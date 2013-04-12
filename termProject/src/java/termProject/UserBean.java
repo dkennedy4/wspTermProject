@@ -22,7 +22,7 @@ public class UserBean implements Serializable
    * DataMembers
    ***********************************/
 
-  @Resource(name="jdbc/jsfUserInfo")
+  @Resource(name="jdbc/f2lDatabasepool")
   private DataSource ds;
  
   private String lastName;
@@ -35,24 +35,46 @@ public class UserBean implements Serializable
   private String[] language;
   private String mylanguage;
   private String homeTown;
+  private String association;
   
   private String strError;
   private PreparedStatement psContact;
   private String myContactInsert; 
   private String passwdMsg;
+  private Integer Student = 2;
+  private Integer Instructor = 1;
+  private boolean status;
+
   
   
   /***********************************
    * Constructor
    ***********************************/
-  public UserBean() {}
+
 
 
   /************************************
    * Getters and Setters
    ************************************/
       
+  public UserBean() {}
 
+  public String getAssociation() {
+    return association;
+  }
+
+  public void setAssociation(String association) {
+    this.association = association;
+  }
+
+  public boolean isStatus() {
+    return status;
+  }
+
+  public void setStatus(boolean status) {
+    this.status = status;
+  }
+  
   public String getPasswdMsg() {
     return passwdMsg;
   }
@@ -168,9 +190,10 @@ public class UserBean implements Serializable
     {
       passwdMsg = "";
     }
-    myContactInsert = "Insert Into contacts" + 
-            "(lastname, firstname, email, phonenumber, contLang, gender, hometown, password)" +
-            " values(?,?,?,?,?,?,?,?)";
+    myContactInsert = "Insert Into members " + 
+            "(lastname, firstname, email, phonenumber, contLang, gender, "
+            + "hometown, password, associateId)" 
+            + " values(?,?,?,?,?,?,?,?,?)";
 
     Connection conn;
     boolean commited = false;
@@ -201,7 +224,8 @@ public class UserBean implements Serializable
       psContact.setString(6, gender);
       psContact.setString(7, homeTown);
       psContact.setString(8, password);
-      
+      psContact.setInt(9, Student);
+ 
      
       psContact.execute();
       
@@ -220,7 +244,7 @@ public class UserBean implements Serializable
     }
     catch(SQLException ex)
     {
-      strError = ex.toString();
+      strError = strError + ex.toString() ;
       return "error";
       
     }

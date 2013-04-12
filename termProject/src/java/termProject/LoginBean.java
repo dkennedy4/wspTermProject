@@ -44,9 +44,14 @@ public class LoginBean implements Serializable
   private String userPassword;
   private String errMsg;
   private boolean loggedIn;
-  private String query = "select * from contacts where email = ? and password = ?";
+  private boolean instructor;
+  private Integer association;
+  private String query = "select * from members "
+          + "inner join associationLookUp "
+          + "on members.ASSOCIATEID = associationLookUp.ASSOCIATEID "
+          + "where email = ? and password = ? ";
   // data source for connection pool
-  @Resource(name="jdbc/jsfUserInfo")
+  @Resource(name="jdbc/f2lDatabasepool")
   private DataSource ds;
   
   
@@ -57,9 +62,12 @@ public class LoginBean implements Serializable
   }
 
 
+
   /*****************************
    * Getters and Setters
    *****************************/
+ 
+
   
     public String getErrMsg() {
     return errMsg;
@@ -170,6 +178,7 @@ public class LoginBean implements Serializable
           user.setPhoneNumber(result.getString("phonenumber"));
           user.setMylanguage(result.getString("contlang"));
           user.setHomeTown(result.getString("hometown"));
+          user.setAssociation(result.getString("association"));
           
 //          file.setUserId(result.getInt("userid"));
 //          
