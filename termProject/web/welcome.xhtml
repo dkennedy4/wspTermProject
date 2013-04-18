@@ -56,57 +56,66 @@
         </fieldset>
       </h:form>
       
-      <h3>Current Students</h3>
-      <h:form rendered="#{user.association == 'Instructor'}">
-        <fieldset>
-          <legend>
-            Students
-          </legend>
-          <div class="isOverfowed">
-            <ul>
-              <li>
-                a
-              </li>
-              <li>
-                a
-              </li>
-              <li>
-                a
-              </li>
-              <li>
-                a
-              </li>
-              <li>
-                a
-              </li>
-              <li>
-                a
-              </li>   
-              <li>
-                a
-              </li>
-              <li>
-                a
-              </li>
-              <li>
-                a
-              </li>
-              <li>
-                a
-              </li>
-              <li>
-                a
-              </li>               
-            </ul>
-          </div>
-        </fieldset>
-      </h:form>
     </article>
       
     <article>
       <h3>Assignment Notification</h3>
     </article>
   </section>
+
+  <h:form class="studentManagement" rendered="#{user.association == 'Instructor'}">
+    <section style="font-size: small; text-align: center">
+      <h3>Current Students</h3>
+      <h:dataTable value="#{Manage.allStud}" var="stud" border="0"
+                     headerClass="header"
+                     rowClasses="oddRow, evenRow"
+                     columnClasses=",,col3and4,col3and4">
+
+              <h:column>
+                  <f:facet name="header">Student ID</f:facet>
+                  #{stud.userId}
+              </h:column>
+              <h:column>
+                  <f:facet name="header">First Name</f:facet>
+                  #{stud.firstName} 
+              </h:column>
+              <h:column>
+                  <f:facet name="header">Last Name</f:facet>
+                  #{stud.LastName}
+              </h:column>
+              <h:column>
+                  <f:facet name="header">Phone #</f:facet>
+                  #{stud.PhoneNumber}
+              </h:column>  
+              <h:column>
+                  <f:facet name="header">Gender</f:facet>
+                  #{stud.gender}
+              </h:column>
+              <h:column>
+                  <f:facet name="header">Languages</f:facet>
+                  #{stud.contLang}
+              </h:column>
+              <h:column>
+                  <f:facet name="header">Home Town</f:facet>
+                  #{stud.homeTown}
+              </h:column>
+              <h:column>
+                  <f:facet name="header">User Name</f:facet>
+                  #{stud.email}
+              </h:column>        
+              <h:column>
+                  <f:facet name="header">Password</f:facet>
+                  #{stud.password}
+              </h:column>        
+              <h:column>
+                  <f:facet name="header">Delete</f:facet>
+                  <h:commandButton value="Update" 
+                                 action="#{fileDelete.deleteFile(myFile.FILEID)}">
+                  </h:commandButton>
+              </h:column>            
+          </h:dataTable>
+    </section>        
+  </h:form>
 
 </ui:define>
 
